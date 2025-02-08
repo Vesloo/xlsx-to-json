@@ -9,12 +9,13 @@ declare global {
 
 function App() {
   const [fileContent, setFileContent] = useState(null);
+  const fullPath = "C:\\Users\\Name\\AppData\\Roaming\\dbtest\\my-folder\\"
 
   const handleFileChange = async (event: any) => {
     const file = event.target.files[0];
     console.log(file)
     if (file) {
-      const filePath = "C:\\Users\\Wesley\\AppData\\Roaming\\dbtest\\my-folder\\"+file.name;
+      const filePath = fullPath+file.name;
       console.log(filePath)
       const json = await window.electron.invoke('parse-xlsx', filePath);
       setFileContent(json);
