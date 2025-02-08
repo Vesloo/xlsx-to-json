@@ -8,8 +8,8 @@ To use it:
 ```shell
 npm i
 npm run dist:win #for windows
-npm run dist:mac #for windows
-npm run dist:linux #for windows
+npm run dist:mac #for mac
+npm run dist:linux #for linux
 ```
 This will create an executable
 
