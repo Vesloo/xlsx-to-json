@@ -7,6 +7,8 @@ type test = string
 
 app.on("ready", () => {
     const mainWindow = new BrowserWindow({
+        width: 900,
+        height: 600,
         webPreferences: {
             preload: getPreloadPath(),
         }
@@ -15,25 +17,24 @@ app.on("ready", () => {
     mainWindow.loadFile(path.join(app.getAppPath(), "/dist-react/index.html"));
 
 
-    ipcMain.handle('parse-xlsx', async (event, filePath) => {
+    ipcMain.handle('parse-xlsx', async (event, [filePath, columns]) => {
         event.preventDefault();
+        const schema:any = {}
 
         let rowsArray:any = [];
 
-        const leadsSchema = {
-            'Brand': { prop: 'brandName', type: String },
-            'Count of Leads': { prop: 'countOfLeads', type: Number },
-            'Count of FTD date': { prop: 'countOfFtd', type: Number },
-            'CR': { prop: 'conversionRate', type: Number },
-        };
+        columns.forEach((column: any) => {
+            if(column.type === "String"){
+                schema[column.name] = { prop: column.prop, type: String };
+            } else if (column.type === "Number") {
+                schema[column.name] = { prop: column.prop, type: Number };
+            }
+        });
 
         console.log(filePath)
-        await xlsx(filePath, { schema: leadsSchema }).then((rows) => {
+        await xlsx(filePath, { schema: schema }).then((rows) => {
             rows.rows.map((value) => {
-                if(value.brandName === "brand_" || value.brandName === "country_") 
-                    rowsArray = rowsArray;
-                else
-                    rowsArray.push(value);
+                rowsArray.push(value);
             })
         }).catch((error) => {
             console.error("Error reading file:", error);
