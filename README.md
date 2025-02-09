@@ -29,6 +29,6 @@ Added dynamic columns feature.
 Choose the name and the type of your xlsx file.
 
 Directly download the exe (windows only atm):
-[xlsx-to-json]((https://www.dropbox.com/scl/fi/3i528xgv1r6hkwnhg336k/xlsx-to-json-0.0.0.exe?rlkey=t1zngjles8xxtlfm75k9vxt6v&st=6bvz5bjv&dl=0))
+[xlsx-to-json](https://www.dropbox.com/scl/fi/3i528xgv1r6hkwnhg336k/xlsx-to-json-0.0.0.exe?rlkey=t1zngjles8xxtlfm75k9vxt6v&st=6bvz5bjv&dl=0)
 
 
