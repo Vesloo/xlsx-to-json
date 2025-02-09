@@ -1,19 +1,25 @@
-This is a simple xlsx to json converter
+# This is a simple xlsx to json converter
 
 ## Contribution welcome
 
-In "src/ui/app.tsx", feel free to change the "fullPath" variable to use the directory you want line 12
+No need to configure file_path anymore, everything works in local
 
-```ts
-const fullPath = "C:\\Users\\Name\\AppData\\Roaming\\dbtest\\my-folder\\"
-```
-
-To use it:
+To use it start by installing the dependencies:
 ```shell
 npm i
-npm run dist:win #for windows
-npm run dist:mac #for mac
-npm run dist:linux #for linux
+```
+You are almost done, now compile it into an app (windows,mac,linux)
+For windows
+```shell
+npm run dist:win
+```
+For mac
+```shell
+npm run dist:mac
+```
+For linux
+```shell
+npm run dist:linux
 ```
 This will create an executable
 

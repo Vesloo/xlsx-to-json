@@ -11,3 +11,4 @@ export function ipcWebContentsSend<T>(
   ) {
     webContents.send(key, payload);
 }
+

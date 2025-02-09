@@ -1,6 +1,7 @@
 import { app, BrowserWindow, ipcMain } from "electron"
 import path from "path"
 import xlsx from 'read-excel-file/node';
+import fs from 'fs';
 import { getPreloadPath } from "./pathResolver.js";
 
 type test = string 
@@ -40,5 +41,11 @@ app.on("ready", () => {
             console.error("Error reading file:", error);
         });
         return JSON.stringify(rowsArray);
+    });
+
+    ipcMain.handle('save-file', async (event, { filePath, fileData }) => {
+        const fullPath = path.join(filePath);
+        fs.writeFileSync(fullPath, Buffer.from(fileData));
+        return fullPath;
     });
 })
